@@ -64,10 +64,14 @@ function Menu (){
   return ( <main className="menu">
     <h2>Our menu</h2>
    
+   
     {numPizzas > 0 ?(
+      <>
+       <p> Great italian cusines, creative dishes for you to choose. All from our stone oven</p>
     <ul className="pizzas">{pizzas.map(pizza => <Pizza pizzaObj={pizza} key={pizza.name} />
 
     )}</ul>
+    </>
       ):(<p>we are still woring on our menu please come back later</p>)}
     </main>
   )
