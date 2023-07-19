@@ -73,16 +73,16 @@ function Menu (){
   )
 }
 
-function Pizza(props){
+function Pizza({pizzaObj}){
 
-  if(props.pizzaObj.soldOut) return null;
-  console.log(props)
+  if(pizzaObj.soldOut) return null;
+  console.log(pizzaObj)
   return <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-      <h3>{props.pizzaObj.name}</h3>
-      <p>{props.pizzaObj.ingredients}</p>
-      <span>{props.pizzaObj.price}</span>
+      <h3>{pizzaObj.name}</h3>
+      <p>{pizzaObj.ingredients}</p>
+      <span>{pizzaObj.price}</span>
       </div>
   </li>
 }
@@ -97,13 +97,20 @@ function Footer () {
   // if (hour >= openHour &&hour <=closeHour)alert("were currently open"); else alert("sorry we are closed")
   return <footer className="footer">
     {isOpen ?(
-    <div className="order">
-     <p>were open unitl {closeHour}:00 </p>
-     <button className="btn">Order</button>
-     </div>
+      <Order closeHour={closeHour} />
+  
     ):<p>we are happy to welcome you between {openHour}:00 and {closeHour}:00</p>
 }
   </footer>
+}
+
+function Order ({closeHour, openHour}) {
+  return(
+  <div className="order">
+  <p>were open from {openHour} to unitl {closeHour}:00 </p>
+  <button className="btn">Order</button>
+  </div>
+  )
 }
 
 function App(){
